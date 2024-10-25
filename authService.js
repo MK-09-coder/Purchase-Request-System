@@ -83,7 +83,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
  * @param {Object} res - Express response object.
  */
 app.get('/auth/callback', passport.authenticate('google', {
-  failureRedirect: '/',
+  failureRedirect: `${REACT_URI}`,
 }), (req, res) => {
   sendEmail(req.user.emails[0].value, 'Login Successful', 'You have successfully logged in.'); //send an Email Notification post logging in
   res.redirect(`${REACT_URI}/choose-role`);
