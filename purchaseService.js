@@ -10,7 +10,7 @@ const { sendEmail } = require('./notificationService'); // Importing notificatio
 const app = express();
 app.use(express.json());
 
-
+const approvalLink = `${process.env.REACT_APP_URI}`;
 /**
  * Middleware to check authentication.
  * @param {Object} req - The request object.
@@ -109,7 +109,27 @@ app.post('/purchase-request', isAuthenticated, async (req, res) => {
 
     // Send notification emails
     sendEmail(req.user.emails[0].value, 'Purchase Request Created', `Your request for ${itemName} has been created.`);
-    sendEmail(approverEmail, 'Approval Needed', `A purchase request for ${itemName} needs your approval.`);
+
+    sendEmail(
+      approverEmail,
+      'Approval Needed',
+      `A purchase request for ${itemName} needs your approval. Click here: ${approvalLink}`, // Fallback text
+      `
+        <p>A purchase request for ${itemName} needs your approval.</p>
+        <p>
+          <a href="${approvalLink}" style="
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #f86011;
+            text-decoration: none;
+            border-radius: 5px;">
+            Review and Approve
+          </a>
+        </p>
+      `
+    );
 
     res.status(201).json({ message: 'Purchase request created', newRequest });
   } catch (error) {

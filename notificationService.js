@@ -28,12 +28,13 @@ const transporter = nodemailer.createTransport({
  * @param {string} text - The text content of the email.
  * @returns {void}
  */
-function sendEmail(to, subject, text) {
+function sendEmail(to, subject, text, html='') {
   const mailOptions = {
     from: process.env.GMAIL_USER,
     to,
     subject,
-    text
+    text,
+    html
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
