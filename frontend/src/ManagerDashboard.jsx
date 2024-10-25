@@ -128,6 +128,7 @@ function ManagerDashboard() {
                     <th>Delivery Charges</th>
                     <th>Tax Amount</th>
                     <th>Total Price</th>
+                    <th>Requester</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -141,6 +142,7 @@ function ManagerDashboard() {
                       <td>{request.deliveryCharges}</td>
                       <td>{request.taxAmount}</td>
                       <td>{request.totalPrice}</td>
+                      <td>{request.requester}</td>
                       <td>{request.status}</td>
                       <td>
                         <button className="approve" onClick={() => handleApprove(request.itemName)}>Approve</button>

@@ -107,6 +107,7 @@ function Dashboard() {
                     <th>Delivery Charges</th>
                     <th>Tax Amount</th>
                     <th>Total Price</th>
+                    <th>Approver</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -119,6 +120,7 @@ function Dashboard() {
                       <td>{request.deliveryCharges}</td>
                       <td>{request.taxAmount}</td>
                       <td>{request.totalPrice}</td>
+                      <td>{request.approverEmail}</td>
                       <td className={`status-${request.status.toLowerCase()}`}>
                         {request.status}
                       </td>
