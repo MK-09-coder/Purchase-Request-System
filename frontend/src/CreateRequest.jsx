@@ -79,7 +79,6 @@ function CreateRequest() {
     })
     .then(data => {
       localStorage.setItem('successMessage', 'Purchase request created successfully.');
-      console.log('Purchase request created:', data);
       navigate('/dashboard');  // Redirect back to dashboard
     })
     .catch(error => {
